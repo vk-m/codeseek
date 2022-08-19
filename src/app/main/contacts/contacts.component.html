@@ -1,9 +1,14 @@
-<button mat-raised-button (click)="addContact()">Add Contact</button>
-<button mat-raised-button color="accent" (click)="loadContacts()">Load Contacts</button>
-<input type="text" placeholder="Search.." [(ngModel)]="search">
+<div class="menu-contact">
+  <div>
+    <button mat-raised-button (click)="addContact()">Add Contact</button>
+    <button mat-raised-button color="accent" (click)="loadContacts()">Load Contacts</button>
+  </div>
+  <input type="text" placeholder="Search.." [(ngModel)]="search">
+</div>
 <div class="contacts">
   <mat-card class="contact-card" *ngFor="let contact of contacts | searchContact: search">
-    <mat-card-title><a [routerLink]="['contact', contact.id]">{{ contact.firstName }} {{ contact.lastName }}</a></mat-card-title>
+    <mat-card-title><a [routerLink]="['contact', contact.id]">{{ contact.firstName }} {{ contact.lastName }}</a>
+    </mat-card-title>
     <mat-card-subtitle>{{ contact.number }}</mat-card-subtitle>
     <mat-card-actions align="end">
       <button mat-button color="primary" (click)="updateContact(contact.id)">Edit</button>
@@ -12,4 +17,6 @@
   </mat-card>
 </div>
 
-<app-change-contact [contact]="contactChange"></app-change-contact>
+<app-modal *ngIf="modalService.isVisible$ | async">
+  <app-change-contact [contact]="contactChange"></app-change-contact>
+</app-modal>

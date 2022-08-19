@@ -10,7 +10,7 @@ export class ContactService {
 
     createContacts() {
         let contacts = [];
-        for (let i = 1; i < 11; i++) {
+        for (let i = 1; i < 31; i++) {
             contacts.push({
                 id: i,
                 firstName: `FirstName_${i}`,
@@ -22,27 +22,51 @@ export class ContactService {
             this.storageService.setLocalItem('contacts', contacts);
         }
     }
+
+    setContacts(contacts: IContact[]) {
+        this.storageService.setLocalItem('contacts', contacts);
+    }
+
     getContacts() {
         return this.storageService.getItem('contacts')
     }
+
     getContact(id: number) {
         return this.storageService.getItem('contacts').find((c: IContact) => c.id == id)
     }
+
     deleteContact(id: number) {
         let contacts = this.getContacts();
         return this.storageService.setLocalItem('contacts', contacts.filter((c: IContact) => c.id != id))
     }
+
     updateContact(contact: IContact) {
         let contacts = this.getContacts();
-        let contactIndex = contacts.findIndex(((obj: IContact) => obj.id == contact.id));
+        
+        return this.storageService.setLocalItem('contacts', contacts)
+    }
+
+    changeContact(contact: any) {
+        let contacts = this.getContacts()
+        if(contact.id == 0) {
+            let lastId = contacts[contacts.length - 1].id;
+            contacts.push({
+                id: lastId + 1,
+                firstName: contact.firstName,
+                lastName: contact.lastName,
+                number: contact.number,
+                age: contact.age,
+                email: contact.email
+            }) 
+            this.setContacts(contacts);
+        } else {
+            let contactIndex = contacts.findIndex(((obj: IContact) => obj.id == contact.id));
             contacts[contactIndex].firstName = contact.firstName;
             contacts[contactIndex].lastName = contact.lastName;
             contacts[contactIndex].number = contact.number;
             contacts[contactIndex].age = contact.age;
             contacts[contactIndex].email = contact.email;
-        return this.storageService.setLocalItem('contacts', contacts)
-    }
-    addContact(contact: IContact) {
-        
+            this.setContacts(contacts);
+        }
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ContactService } from './../../_core/services/contact.service';
 import { IContact } from './../../_core/models/contact.model';
 

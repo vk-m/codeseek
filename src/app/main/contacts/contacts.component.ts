@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from 'src/app/_core/services/contact.service';
+import { ModalService } from 'src/app/_core/services/modal.service';
 import { IContact } from './../../_core/models/contact.model';
 
 @Component({
@@ -10,11 +11,20 @@ import { IContact } from './../../_core/models/contact.model';
 export class ContactsComponent implements OnInit {
   contacts: IContact[] = [];
   search = "";
-  contactChange!: IContact;
+  contactChange: IContact  = {
+    id: 0,
+    firstName: "",
+    lastName: "",
+    number: "",
+    age: 0,
+    email: ""
+  }
 
   constructor(
       private contactService: ContactService,
+      public modalService: ModalService
     ) { }
+
 
   ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
@@ -32,6 +42,7 @@ export class ContactsComponent implements OnInit {
 
   updateContact(id: number) {
     this.contactChange = this.contactService.getContact(id);
+    this.modalService.open();
   }
 
   addContact(){
@@ -43,5 +54,6 @@ export class ContactsComponent implements OnInit {
       age: 0,
       email: ""
     }
+    this.modalService.open();
   }
 }

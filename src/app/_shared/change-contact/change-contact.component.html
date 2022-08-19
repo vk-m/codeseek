@@ -1,48 +1,48 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstNameControl" value="{{ contact.firstName }}">
-    <mat-error *ngIf="formControls['firstNameControl'].errors?.['required']">
+    <input matInput formControlName="firstName" value="">
+    <mat-error *ngIf="formControls['firstName'].errors?.['required']">
       First name is required
     </mat-error>
-    <mat-error *ngIf="formControls['firstNameControl'].errors?.['minlength']">
+    <mat-error *ngIf="formControls['firstName'].errors?.['minlength']">
       First name must be at least 3 letters long
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastNameControl" value="{{ contact.lastName}}">
-    <mat-error *ngIf="formControls['lastNameControl'].errors?.['required']">
+    <input matInput formControlName="lastName" value="">
+    <mat-error *ngIf="formControls['lastName'].errors?.['required']">
       First name is required
     </mat-error>
-    <mat-error *ngIf="formControls['lastNameControl'].errors?.['minlength']">
+    <mat-error *ngIf="formControls['lastName'].errors?.['minlength']">
       Last name must be at least 3 letters long
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Phone number</mat-label>
-    <input matInput formControlName="numberControl" value="{{ contact.number }}">
-    <mat-error *ngIf="formControls['numberControl'].errors?.['required']">
+    <input matInput formControlName="number" value="">
+    <mat-error *ngIf="formControls['number'].errors?.['required']">
       Phone number is required
     </mat-error>
-    <mat-error *ngIf="formControls['numberControl'].errors?.['pattern']">
-      Phone number must be start from "+" and contain numbers
+    <mat-error *ngIf="formControls['number'].errors?.['pattern']">
+      Phone number must be contain only numbers and start with "+"
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput formControlName="emailControl" value="{{ contact.email }}">
-    <mat-error *ngIf="formControls['emailControl'].errors?.['email']">
+    <input matInput formControlName="email" value="">
+    <mat-error *ngIf="formControls['email'].errors?.['email']">
       Please enter a valid email address
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Age</mat-label>
-    <input matInput formControlName="ageControl" value="{{ contact.age }}">
-    <mat-error *ngIf="formControls['ageControl'].errors?.['pattern']">
+    <input matInput formControlName="age" value="">
+    <mat-error *ngIf="formControls['age'].errors?.['pattern']">
       Age must be contain only numbers
     </mat-error>
   </mat-form-field>
-  <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">
-  </button>
+  <input matInput formControlName="id" value="" hidden>
+  <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Submit</button>
 </form>

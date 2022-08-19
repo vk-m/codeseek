@@ -9,7 +9,7 @@
     display: inline-block;
   }
 
-  mat-card-title{
+  mat-card-title {
     font-size: 21px;
   }
 
@@ -17,5 +17,25 @@
     display: block;
     font-size: 16px;
     font-weight: 400;
+  }
+}
+
+.menu-contact {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 14px;
+
+  button {
+    margin: 0px 6px;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
   }
 }
