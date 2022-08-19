@@ -1,0 +1,21 @@
+.contacts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .contact-card {
+    margin: 8px;
+    width: calc(100%/3.5);
+    display: inline-block;
+  }
+
+  mat-card-title{
+    font-size: 21px;
+  }
+
+  mat-card-subtitle {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

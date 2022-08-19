@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{ contact.firstName }} {{ contact.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ contact.number }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+        <p>Age: {{ contact.age }}</p>
+        <p>Email: {{ contact.email }}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button color="primary">Edit</button>
+        <button mat-button color="warn">Delete</button>
+      </mat-card-actions>
+  </mat-card>

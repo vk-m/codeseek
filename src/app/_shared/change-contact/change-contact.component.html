@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstNameControl" value="{{ contact.firstName }}">
+    <mat-error *ngIf="formControls['firstNameControl'].errors?.['required']">
+      First name is required
+    </mat-error>
+    <mat-error *ngIf="formControls['firstNameControl'].errors?.['minlength']">
+      First name must be at least 3 letters long
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastNameControl" value="{{ contact.lastName}}">
+    <mat-error *ngIf="formControls['lastNameControl'].errors?.['required']">
+      First name is required
+    </mat-error>
+    <mat-error *ngIf="formControls['lastNameControl'].errors?.['minlength']">
+      Last name must be at least 3 letters long
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Phone number</mat-label>
+    <input matInput formControlName="numberControl" value="{{ contact.number }}">
+    <mat-error *ngIf="formControls['numberControl'].errors?.['required']">
+      Phone number is required
+    </mat-error>
+    <mat-error *ngIf="formControls['numberControl'].errors?.['pattern']">
+      Phone number must be start from "+" and contain numbers
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="emailControl" value="{{ contact.email }}">
+    <mat-error *ngIf="formControls['emailControl'].errors?.['email']">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Age</mat-label>
+    <input matInput formControlName="ageControl" value="{{ contact.age }}">
+    <mat-error *ngIf="formControls['ageControl'].errors?.['pattern']">
+      Age must be contain only numbers
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">
+  </button>
+</form>
